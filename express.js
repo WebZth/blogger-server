@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(compression());
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors());
 app.use(express.static("build"));
 app.use("/", authRoutes);
