@@ -15,13 +15,13 @@ const postRoutes = require("./routes/post.routes");
 const app = express();
 
 // middlewares
+app.use(cors());
 app.use(express.static("build"));
-app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.urlencoded({ extended: true }));
 app.use(compression());
-app.use(cors());
 app.use("/", authRoutes);
 app.use("/", userRoutes);
 app.use("/", postRoutes);
